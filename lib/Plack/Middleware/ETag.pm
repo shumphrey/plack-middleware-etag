@@ -1,5 +1,7 @@
 package Plack::Middleware::ETag;
 
+# ABSTRACT: Adds automatically an ETag header.
+
 use strict;
 use warnings;
 use Digest::SHA;
@@ -77,10 +79,6 @@ sub _set_cache_control {
 1;
 __END__
 
-=head1 NAME
-
-Plack::Middleware::ETag - Adds automatically an ETag header.
-
 =head1 SYNOPSIS
 
   use Plack::Builder;
@@ -127,16 +125,3 @@ Will add "Cache-Control: must-revalidate, max-age=3600" to the headers.
 Will not add an ETag if there is already a Last-Modified header.
 
 =back
-
-=head1 AUTHOR
-
-franck cuny E<lt>franck@lumberjaph.netE<gt>
-
-=head1 SEE ALSO
-
-=head1 LICENSE
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-=cut
