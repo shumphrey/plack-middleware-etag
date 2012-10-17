@@ -51,13 +51,16 @@ sub call {
                     $etag .= "-" if ( $etag && $etag !~ /-$/ );
                     $etag .= ( sprintf "%x", $stats[7] );
                 }
-            } else {
+            } elsif ( ref($res->[2]) eq 'ARRAY' ) {
                 my $sha = Digest::SHA->new;
                 $sha->add( @{ $res->[2] } );
                 $etag = $sha->hexdigest;
             }
-            Plack::Util::header_set( $headers, 'ETag', $etag );
-            $self->_set_cache_control($headers);
+
+            if ( defined $etag ) {
+              Plack::Util::header_set( $headers, 'ETag', $etag );
+              $self->_set_cache_control($headers);
+            }
             return;
         }
     );

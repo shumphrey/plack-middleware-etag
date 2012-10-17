@@ -57,4 +57,7 @@ test_psgi
     }
     };
 
+# Can't test that empty/non-array content produces no ETag error because
+# it currently produces a Plack::Test error.
+
 done_testing;
