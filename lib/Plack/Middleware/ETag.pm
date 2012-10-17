@@ -58,8 +58,8 @@ sub call {
             }
 
             if ( defined $etag ) {
-              Plack::Util::header_set( $headers, 'ETag', $etag );
-              $self->_set_cache_control($headers);
+                Plack::Util::header_set( $headers, 'ETag', $etag );
+                $self->_set_cache_control($headers);
             }
             return;
         }
